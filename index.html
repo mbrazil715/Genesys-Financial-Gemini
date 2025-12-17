@@ -98,20 +98,25 @@
             color: var(--secondary);
         }
 
-        .btn-login {
+        /* UPDATED: Increased specificity to fix readability issue */
+        .nav-links .btn-login {
             background: var(--primary);
             color: var(--white);
             padding: 0.5rem 1.5rem;
             border-radius: 5px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: var(--transition);
             cursor: pointer;
+            box-shadow: 0 4px 6px rgba(15, 76, 129, 0.2);
+            letter-spacing: 0.5px;
         }
 
-        .btn-login:hover {
+        .nav-links .btn-login:hover {
             background: var(--secondary);
+            color: var(--white);
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 168, 232, 0.3);
         }
 
         /* --- Hero Section --- */
@@ -259,6 +264,250 @@
             font-size: 0.95rem;
             margin-bottom: 1.5rem; /* Space for the "Learn More" text */
         }
+
+        /* --- New Component: Calculator --- */
+        .calculator-section {
+            background: #f1f8ff;
+            border-top: 1px solid #e1ecf5;
+        }
+
+        .calc-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .calc-inputs {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .range-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .range-group label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .range-group input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .range-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .calc-results {
+            flex: 0.8;
+            background: linear-gradient(135deg, var(--primary), #003366);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-width: 280px;
+            box-shadow: 0 10px 20px rgba(15, 76, 129, 0.2);
+        }
+
+        .calc-result-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 1rem 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* --- New Component: Insights/News --- */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .news-tag {
+            background: var(--secondary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            border-radius: 50px;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        
+        .news-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* --- New Component: Team --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: white;
+            text-align: center;
+            border-radius: 10px;
+            padding: 2rem 1rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .team-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #f0f4f8;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .team-name {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .team-role {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- New Component: Testimonials --- */
+        .testimonials-section {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .testimonials-section h2 {
+            color: white !important;
+        }
+        
+        .testimonials-section p {
+            color: rgba(255,255,255,0.8) !important;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: left;
+            border-left: 4px solid var(--accent);
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-info h4 {
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .author-info span {
+            color: var(--accent);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
 
         /* --- Features / Why Choose Us --- */
         .features {
@@ -446,7 +695,7 @@
             background: var(--secondary);
         }
 
-        /* --- Detail View Styles (New) --- */
+        /* --- Detail View Styles --- */
         #detail-view {
             display: none; /* Hidden by default */
             padding-top: 2rem;
@@ -593,6 +842,12 @@
             .detail-icon-large {
                 margin-bottom: 1rem;
             }
+            
+            .calc-container {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -617,8 +872,9 @@
             </a>
             <ul class="nav-links">
                 <li><a onclick="showMain(); document.getElementById('services').scrollIntoView({behavior: 'smooth'})">Services</a></li>
+                <li><a onclick="showMain(); document.getElementById('tools').scrollIntoView({behavior: 'smooth'})">Tools</a></li>
+                <li><a onclick="showMain(); document.getElementById('insights').scrollIntoView({behavior: 'smooth'})">Insights</a></li>
                 <li><a onclick="showMain(); document.getElementById('about').scrollIntoView({behavior: 'smooth'})">About</a></li>
-                <li><a onclick="showMain(); document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Contact</a></li>
                 <li><a class="btn-login">Login</a></li>
             </ul>
             <div class="mobile-toggle">☰</div>
@@ -677,6 +933,76 @@
             </div>
         </section>
 
+        <!-- NEW: Financial Calculator Section -->
+        <section id="tools" class="section calculator-section">
+            <div class="section-title">
+                <h2>Growth Calculator</h2>
+                <p>Visualize the power of compound interest over time.</p>
+            </div>
+            <div class="calc-container">
+                <div class="calc-inputs">
+                    <div class="range-group">
+                        <label>Initial Deposit: <span id="val-deposit">$10,000</span></label>
+                        <input type="range" id="deposit" min="1000" max="100000" step="1000" value="10000" oninput="calculateGrowth()">
+                    </div>
+                    <div class="range-group">
+                        <label>Monthly Contribution: <span id="val-monthly">$500</span></label>
+                        <input type="range" id="monthly" min="0" max="5000" step="100" value="500" oninput="calculateGrowth()">
+                    </div>
+                    <div class="range-group">
+                        <label>Interest Rate: <span id="val-rate">6%</span></label>
+                        <input type="range" id="rate" min="1" max="15" step="0.5" value="6" oninput="calculateGrowth()">
+                    </div>
+                    <div class="range-group">
+                        <label>Years to Grow: <span id="val-years">20 Years</span></label>
+                        <input type="range" id="years" min="5" max="50" step="1" value="20" oninput="calculateGrowth()">
+                    </div>
+                </div>
+                <div class="calc-results">
+                    <p>Estimated Total Value</p>
+                    <div class="calc-result-value" id="total-value">$0</div>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">*Based on annual compounding. For illustrative purposes only.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Market Insights Section -->
+        <section id="insights" class="section">
+            <div class="section-title">
+                <h2>Market Insights</h2>
+                <p>Stay informed with the latest financial news and analysis.</p>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div style="background: #e1e8ed; height: 180px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">📉</div>
+                    <div class="news-content">
+                        <span class="news-tag">Market Analysis</span>
+                        <span class="news-date">Oct 24, 2024</span>
+                        <h3 class="news-title">Navigating Q4 Volatility: Strategies for Stability</h3>
+                        <a href="#" class="news-link">Read Analysis →</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div style="background: #e1e8ed; height: 180px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🏡</div>
+                    <div class="news-content">
+                        <span class="news-tag">Real Estate</span>
+                        <span class="news-date">Oct 22, 2024</span>
+                        <h3 class="news-title">The 2025 Housing Outlook: Rates vs Inventory</h3>
+                        <a href="#" class="news-link">Read Report →</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div style="background: #e1e8ed; height: 180px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">🤖</div>
+                    <div class="news-content">
+                        <span class="news-tag">Tech & Finance</span>
+                        <span class="news-date">Oct 18, 2024</span>
+                        <h3 class="news-title">How AI is Reshaping Personal Wealth Management</h3>
+                        <a href="#" class="news-link">Read Article →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <!-- Why Choose Us -->
         <section class="section features">
             <div class="section-title">
@@ -708,6 +1034,43 @@
             </div>
         </section>
 
+        <!-- NEW: Testimonials Section -->
+        <section class="section testimonials-section">
+            <div class="section-title">
+                <h2>Trusted by Generations</h2>
+                <p>Hear from clients who have built their legacy with us.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="quote">"Genesys transformed how I view my retirement. Their advisory team didn't just sell me products; they built a roadmap for my life."</p>
+                    <div class="author">
+                        <div class="author-info">
+                            <h4>Robert & Sarah Jenkins</h4>
+                            <span>Clients since 2008</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"As a small business owner, I needed flexibility. The digital tools and business banking support here are second to none."</p>
+                    <div class="author">
+                        <div class="author-info">
+                            <h4>Marcus Thorn</h4>
+                            <span>Thorn Logistics, CEO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="quote">"Refinancing our home was seamless. The rates were competitive, but the personal communication was what won us over."</p>
+                    <div class="author">
+                        <div class="author-info">
+                            <h4>Elena Rodriguez</h4>
+                            <span>Homeowner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Stats Bar -->
         <section class="stats" id="about">
             <div class="stat-item">
@@ -725,6 +1088,40 @@
             <div class="stat-item">
                 <h3>45</h3>
                 <p>Locations</p>
+            </div>
+        </section>
+
+        <!-- NEW: Leadership Team (Drill-down style content shown on main page) -->
+        <section class="section">
+            <div class="section-title">
+                <h2>Meet Our Leadership</h2>
+                <p>Guided by decades of industry expertise.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💼</div>
+                    <h3 class="team-name">Michael Chen</h3>
+                    <p class="team-role">Chief Executive Officer</p>
+                    <p style="font-size: 0.9rem; color: #666;">25+ years leading global financial strategy.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍💼</div>
+                    <h3 class="team-name">Sarah Williams</h3>
+                    <p class="team-role">Chief Financial Officer</p>
+                    <p style="font-size: 0.9rem; color: #666;">Expert in corporate finance and risk management.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👨‍⚖️</div>
+                    <h3 class="team-name">James Rodriguez</h3>
+                    <p class="team-role">Chief Investment Officer</p>
+                    <p style="font-size: 0.9rem; color: #666;">CFA Charterholder with a focus on sustainable growth.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍💻</div>
+                    <h3 class="team-name">Emily Thompson</h3>
+                    <p class="team-role">CTO</p>
+                    <p style="font-size: 0.9rem; color: #666;">Driving digital transformation and security.</p>
+                </div>
             </div>
         </section>
     </div>
@@ -816,7 +1213,33 @@
 
     <!-- Interactive Script -->
     <script>
-        // Data for Services
+        // --- Calculator Logic ---
+        function calculateGrowth() {
+            const deposit = parseFloat(document.getElementById('deposit').value);
+            const monthly = parseFloat(document.getElementById('monthly').value);
+            const rate = parseFloat(document.getElementById('rate').value) / 100;
+            const years = parseFloat(document.getElementById('years').value);
+
+            // Update UI Labels
+            document.getElementById('val-deposit').innerText = '$' + deposit.toLocaleString();
+            document.getElementById('val-monthly').innerText = '$' + monthly.toLocaleString();
+            document.getElementById('val-rate').innerText = (rate * 100).toFixed(1) + '%';
+            document.getElementById('val-years').innerText = years + ' Years';
+
+            // Compound Interest Calculation (Monthly contribution formula)
+            // A = P(1 + r/n)^(nt) + PMT * [((1 + r/n)^(nt) - 1) / (r/n)]
+            const n = 12; // Monthly compounding
+            const total = deposit * Math.pow(1 + rate/n, n*years) + 
+                          (monthly * (Math.pow(1 + rate/n, n*years) - 1)) / (rate/n);
+
+            document.getElementById('total-value').innerText = '$' + Math.floor(total).toLocaleString();
+        }
+
+        // Initialize Calculator
+        window.addEventListener('load', calculateGrowth);
+
+
+        // --- Existing SPA Logic ---
         const serviceData = {
             wealth: {
                 title: "Wealth Management",

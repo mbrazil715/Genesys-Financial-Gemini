@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genesys Financial | Next-Gen Banking</title>
+    <style>
+        :root {
+            --primary: #0f4c81; /* Classic Trust Blue */
+            --secondary: #00a8e8; /* Modern Bright Blue */
+            --accent: #f0c419; /* Gold for highlights */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        /* --- Header & Nav --- */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-svg {
+            height: 40px;
+            width: 40px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 2px 4px rgba(15, 76, 129, 0.2));
+        }
+
+        .logo:hover .logo-svg {
+            transform: rotate(-10deg) scale(1.05);
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+            font-weight: 400;
+            margin-left: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .btn-login {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-login:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), #002b4d);
+            color: var(--white);
+            padding: 5rem 5%;
+            text-align: center;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            opacity: 0.9;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* --- Sections General --- */
+        .section {
+            padding: 4rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        /* --- Services Grid --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--secondary);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer; /* Indicates clickability */
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* Add a visual indicator that cards are clickable */
+        .card::after {
+            content: 'Learn More →';
+            position: absolute;
+            bottom: 1.5rem;
+            right: 2rem;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-weight: 600;
+        }
+
+        .card:hover::after {
+            opacity: 1;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem; /* Space for the "Learn More" text */
+        }
+
+        /* --- Features / Why Choose Us --- */
+        .features {
+            background: var(--white);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            background: rgba(15, 76, 129, 0.1);
+            color: var(--primary);
+            padding: 1rem;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        /* --- Stats Section --- */
+        .stats {
+            background: var(--primary);
+            color: var(--white);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 3rem 5%;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #0a355c;
+            color: #ccc;
+            padding: 3rem 5% 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* --- Modal Styles --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+        }
+
+        .modal-container h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-submit:hover {
+            background: var(--secondary);
+        }
+
+        /* --- Detail View Styles (New) --- */
+        #detail-view {
+            display: none; /* Hidden by default */
+            padding-top: 2rem;
+            min-height: 80vh;
+            animation: fadeIn 0.5s ease;
+        }
+
+        #detail-view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .detail-hero {
+            background: var(--bg-light);
+            padding: 3rem 5%;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .detail-header-content {
+            max-width: 600px;
+        }
+
+        .detail-icon-large {
+            font-size: 6rem;
+            opacity: 0.2;
+            color: var(--primary);
+        }
+
+        .btn-back {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .btn-back:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .detail-content {
+            padding: 0 5% 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        .detail-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .detail-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .detail-list li::before {
+            content: '✓';
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .sidebar-box {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent);
+        }
+
+        /* --- Mobile Nav Trigger --- */
+        .mobile-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                box-shadow: var(--shadow);
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .stat-item {
+                flex: 1 1 40%;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .detail-hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .detail-icon-large {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="#" class="logo" onclick="showMain()">
+                <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 2L36 10V20C36 28.5 28.5 36 20 38C11.5 36 4 28.5 4 20V10L20 2Z" fill="url(#logo_grad)"/>
+                    <path d="M20 12L20 28M12 20L28 20" stroke="white" stroke-width="3" stroke-linecap="round" stroke-opacity="0.9"/>
+                    <circle cx="20" cy="20" r="3" fill="white"/>
+                    <defs>
+                        <linearGradient id="logo_grad" x1="4" y1="2" x2="36" y2="38" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#0f4c81"/>
+                            <stop offset="1" stop-color="#00a8e8"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="logo-text">Genesys<span>Financial</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a onclick="showMain(); document.getElementById('services').scrollIntoView({behavior: 'smooth'})">Services</a></li>
+                <li><a onclick="showMain(); document.getElementById('about').scrollIntoView({behavior: 'smooth'})">About</a></li>
+                <li><a onclick="showMain(); document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Contact</a></li>
+                <li><a class="btn-login">Login</a></li>
+            </ul>
+            <div class="mobile-toggle">☰</div>
+        </nav>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <div id="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Your Financial Future<br>Starts Here</h1>
+            <p>Experience next-generation banking with comprehensive wealth management, innovative solutions, and personalized service designed for your success.</p>
+            <div class="cta-group">
+                <a href="#contact" class="btn-primary">Get Started</a>
+                <a href="#services" class="btn-outline">Explore Services</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Click any service below to view full details</p>
+            </div>
+            <div class="grid">
+                <div class="card" onclick="showDetail('wealth')">
+                    <span class="card-icon">📊</span>
+                    <h3>Wealth Management</h3>
+                    <p>Build and preserve your wealth with personalized portfolio strategies designed for long-term growth.</p>
+                </div>
+                <div class="card" onclick="showDetail('banking')">
+                    <span class="card-icon">🏦</span>
+                    <h3>Banking Solutions</h3>
+                    <p>Premium accounts with competitive rates, zero fees, and cutting-edge digital tools.</p>
+                </div>
+                <div class="card" onclick="showDetail('advisory')">
+                    <span class="card-icon">📈</span>
+                    <h3>Investment Advisory</h3>
+                    <p>Make informed decisions with expert guidance and data-driven insights from certified advisors.</p>
+                </div>
+                <div class="card" onclick="showDetail('mortgage')">
+                    <span class="card-icon">🏠</span>
+                    <h3>Mortgage Services</h3>
+                    <p>Turn your dream home into reality with flexible financing options and competitive rates.</p>
+                </div>
+                <div class="card" onclick="showDetail('insurance')">
+                    <span class="card-icon">🛡️</span>
+                    <h3>Insurance Planning</h3>
+                    <p>Comprehensive protection for you and your loved ones with tailored insurance solutions.</p>
+                </div>
+                <div class="card" onclick="showDetail('retirement')">
+                    <span class="card-icon">🎯</span>
+                    <h3>Retirement Planning</h3>
+                    <p>Secure your future with strategic retirement planning and tax-advantaged investment options.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="section features">
+            <div class="section-title">
+                <h2>Why Choose Genesys?</h2>
+                <p>Redefining financial services since 1987</p>
+            </div>
+            <div class="grid">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <div>
+                        <h3>24/7 Support</h3>
+                        <p>Connect with us anytime through phone, chat, email, or video.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    <div>
+                        <h3>Bank-Grade Security</h3>
+                        <p>Your data is protected by enterprise-level encryption.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✨</div>
+                    <div>
+                        <h3>Personalized Tech</h3>
+                        <p>AI-powered insights tailored to your unique financial goals.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <section class="stats" id="about">
+            <div class="stat-item">
+                <h3>$12.5B</h3>
+                <p>Assets Managed</p>
+            </div>
+            <div class="stat-item">
+                <h3>250K+</h3>
+                <p>Satisfied Clients</p>
+            </div>
+            <div class="stat-item">
+                <h3>37</h3>
+                <p>Years of Service</p>
+            </div>
+            <div class="stat-item">
+                <h3>45</h3>
+                <p>Locations</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Detail View Wrapper (Hidden by default) -->
+    <div id="detail-view">
+        <div class="detail-hero">
+            <div class="detail-header-content">
+                <button class="btn-back" onclick="showMain()">← Back to Overview</button>
+                <h1 id="detail-title">Service Title</h1>
+                <p id="detail-subtitle" style="font-size: 1.2rem; color: var(--text-light);">Service subtitle goes here.</p>
+            </div>
+            <div class="detail-icon-large" id="detail-icon">📊</div>
+        </div>
+        
+        <div class="detail-content">
+            <div class="detail-grid">
+                <div class="main-text">
+                    <h2>Overview</h2>
+                    <p id="detail-desc" style="margin-bottom: 2rem;">Full description text.</p>
+                    
+                    <h3>Key Features</h3>
+                    <ul class="detail-list" id="detail-features">
+                        <!-- Filled by JS -->
+                    </ul>
+                </div>
+                
+                <aside>
+                    <div class="sidebar-box">
+                        <h3>Interested?</h3>
+                        <p style="margin-bottom: 1.5rem;">Speak with a specialist about your needs today.</p>
+                        <button class="btn-submit" onclick="document.querySelector('.modal-overlay').classList.add('active')">Schedule Consultation</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Genesys Financial</h4>
+                <p>Revolutionizing financial services by combining technology with human expertise.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>📞 1-800-436-3797</li>
+                    <li>✉️ support@genesys.com</li>
+                    <li>🏢 1250 Monument Circle, Ind.</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Genesys Financial. Member FDIC | Equal Housing Lender.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-container">
+            <span class="modal-close">&times;</span>
+            <h2>Secure Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username / Email</label>
+                    <input type="text" id="username" placeholder="Enter your ID">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn-submit">Log In</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                <a href="#" style="color: var(--primary);">Forgot Password?</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Interactive Script -->
+    <script>
+        // Data for Services
+        const serviceData = {
+            wealth: {
+                title: "Wealth Management",
+                icon: "📊",
+                subtitle: "Strategic planning for your financial legacy.",
+                desc: "Our wealth management philosophy is built on the understanding that your financial journey is unique. We combine sophisticated investment strategies with holistic financial planning to help you build, grow, and protect your assets across generations. From tax-efficient investing to estate planning, we cover every angle.",
+                features: [
+                    "Personalized Investment Portfolios",
+                    "Tax-Loss Harvesting & Optimization",
+                    "Estate & Trust Planning",
+                    "Philanthropic Strategy",
+                    "Executive Compensation Analysis"
+                ]
+            },
+            banking: {
+                title: "Banking Solutions",
+                icon: "🏦",
+                subtitle: "Modern banking designed for your lifestyle.",
+                desc: "Experience banking without boundaries. Our premium accounts offer higher limits, lower fees, and seamless digital integration. Whether you need a high-yield savings account or a checking account with global ATM reimbursement, Genesys provides the infrastructure for your daily financial needs.",
+                features: [
+                    "High-Yield Savings (up to 4.5% APY)",
+                    "Premium Checking with No Foreign Fees",
+                    "50,000+ Fee-Free ATMs Worldwide",
+                    "Instant Peer-to-Peer Transfers",
+                    "Mobile Check Deposit & Bill Pay"
+                ]
+            },
+            advisory: {
+                title: "Investment Advisory",
+                icon: "📈",
+                subtitle: "Expert guidance for complex markets.",
+                desc: "Navigate market volatility with confidence. Our investment advisory team uses institutional-grade research and proprietary data analytics to construct portfolios that align with your risk tolerance and time horizon. We don't just follow trends; we analyze the fundamentals.",
+                features: [
+                    "Active & Passive Management Options",
+                    "Alternative Investments (Private Equity, Real Estate)",
+                    "Quarterly Performance Reviews",
+                    "Risk Tolerance Assessments",
+                    "Retirement Income Modeling"
+                ]
+            },
+            mortgage: {
+                title: "Mortgage Services",
+                icon: "🏠",
+                subtitle: "Financing your dream home made simple.",
+                desc: "Whether you are buying your first home, upgrading to a luxury property, or refinancing, our mortgage specialists ensure a smooth process. We offer competitive rates and a variety of terms to fit your specific budget and long-term goals.",
+                features: [
+                    "Jumbo & Super Jumbo Loans",
+                    "Fixed & Adjustable Rate Mortgages",
+                    "First-Time Homebuyer Programs",
+                    "HELOC (Home Equity Lines of Credit)",
+                    "Digital Application & Fast Closing"
+                ]
+            },
+            insurance: {
+                title: "Insurance Planning",
+                icon: "🛡️",
+                subtitle: "Protecting what matters most.",
+                desc: "A solid financial plan requires a strong defense. Our insurance specialists review your current coverage and identify gaps to ensure you, your family, and your assets are fully protected against unforeseen events.",
+                features: [
+                    "Term & Whole Life Insurance",
+                    "Disability Income Protection",
+                    "Long-Term Care Solutions",
+                    "Umbrella Liability Coverage",
+                    "Business Succession Planning"
+                ]
+            },
+            retirement: {
+                title: "Retirement Planning",
+                icon: "🎯",
+                subtitle: "Your roadmap to a secure future.",
+                desc: "Retirement isn't just about the end of work; it's about the beginning of a new chapter. We help you calculate exactly what you need to maintain your lifestyle, optimize your Social Security benefits, and manage your withdrawals tax-efficiently.",
+                features: [
+                    "401(k) & IRA Rollovers",
+                    "Social Security Optimization",
+                    "Healthcare Cost Planning",
+                    "Required Minimum Distribution (RMD) Strategy",
+                    "Longevity Risk Analysis"
+                ]
+            }
+        };
+
+        // Navigation Functions
+        function showDetail(serviceKey) {
+            const data = serviceData[serviceKey];
+            if (!data) return;
+
+            // Populate Data
+            document.getElementById('detail-title').innerText = data.title;
+            document.getElementById('detail-subtitle').innerText = data.subtitle;
+            document.getElementById('detail-icon').innerText = data.icon;
+            document.getElementById('detail-desc').innerText = data.desc;
+
+            // Populate List
+            const list = document.getElementById('detail-features');
+            list.innerHTML = ''; // Clear previous
+            data.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.innerText = feature;
+                list.appendChild(li);
+            });
+
+            // Switch Views
+            document.getElementById('main-content').style.display = 'none';
+            const detailView = document.getElementById('detail-view');
+            detailView.style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function showMain() {
+            document.getElementById('detail-view').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#') && targetId.length > 1) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        showMain(); // Ensure we are on main view
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Login Modal Logic
+        const loginBtns = document.querySelectorAll('.btn-login');
+        const modal = document.getElementById('loginModal');
+        const closeBtn = document.querySelector('.modal-close');
+        const loginForm = document.getElementById('loginForm');
+
+        loginBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('active');
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Handle Form Submit (Mock)
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = loginForm.querySelector('button');
+            const originalText = btn.innerText;
+            
+            btn.innerText = 'Logging in...';
+            btn.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                btn.innerText = 'Success!';
+                btn.style.background = '#28a745';
+                setTimeout(() => {
+                    modal.classList.remove('active');
+                    btn.innerText = originalText;
+                    btn.style.background = '';
+                    btn.style.opacity = '1';
+                    loginForm.reset();
+                }, 1000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
